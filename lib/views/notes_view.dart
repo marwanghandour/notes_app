@@ -91,73 +91,6 @@ class _NotesViewState extends State<NotesView> {
     );
   }
 
-  void editTodoDialog(BuildContext context, int index, String currentTitle, String currentContent) {
-    final TextEditingController titleController = TextEditingController(text: currentTitle);
-    final TextEditingController contentController = TextEditingController(text: currentContent);
-
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          backgroundColor: Colors.grey.shade800,
-          title: const Text('Edit Note', style: TextStyle(color: Colors.white)),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                textCapitalization: TextCapitalization.words,
-                style: const TextStyle(color: Colors.white),
-                controller: titleController,
-                decoration: const InputDecoration(
-                  hintText: 'Enter Title',
-                  hintStyle: TextStyle(color: Colors.white),
-                ),
-              ),
-              TextField(
-                textCapitalization: TextCapitalization.sentences,
-                style: const TextStyle(color: Colors.white),
-                controller: contentController,
-                decoration: const InputDecoration(
-                  hintText: 'Enter your Note',
-                  hintStyle: TextStyle(color: Colors.white),
-                ),
-              ),
-            ],
-          ),
-          actions: [
-            TextButton(
-              style: ButtonStyle(
-                backgroundColor: WidgetStateProperty.all(Colors.white),
-              ),
-              onPressed: () {
-                setState(() {
-                  if (titleController.text.isNotEmpty && contentController.text.isNotEmpty) {
-                    notes[index] = Note(
-                      title: titleController.text,
-                      content: contentController.text,
-                      date: DateTime.now().toString(),
-                    );
-                  }
-                  Navigator.of(context).pop();
-                });
-              },
-              child: const Text('Update', style: TextStyle(color: Colors.black)),
-            ),
-            TextButton(
-              style: ButtonStyle(
-                backgroundColor: WidgetStateProperty.all(Colors.white),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('Cancel', style: TextStyle(color: Colors.black)),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -174,7 +107,7 @@ class _NotesViewState extends State<NotesView> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.grey.shade800,
         onPressed: () {
-          addTodoDialog(context);
+         addTodoDialog(context);
         },
         child: const Icon(Icons.add),
       ),
