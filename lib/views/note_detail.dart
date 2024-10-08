@@ -4,7 +4,7 @@ import 'package:notesapp/models/notes_model.dart';
 class NoteDetailPage extends StatelessWidget {
   final Note note;
 
-  NoteDetailPage({required this.note});
+  const NoteDetailPage({super.key, required this.note});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +14,14 @@ class NoteDetailPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Text(
-          note.content,
-          style: const TextStyle(fontSize: 18),
+        child: ListView(
+          children: [
+            Text('Content:'),
+            Text(
+              note.content,
+              style: const TextStyle(fontSize: 20),
+            ),
+          ],
         ),
       ),
     );

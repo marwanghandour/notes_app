@@ -1,17 +1,64 @@
 import 'package:flutter/material.dart';
 import 'package:notesapp/models/notes_model.dart';
+import 'package:notesapp/widgets/bottom_navigation.dart';
 import 'package:notesapp/widgets/note_widget.dart';
 
 class NotesView extends StatefulWidget {
   const NotesView({super.key});
+  
 
   @override
   _NotesViewState createState() => _NotesViewState();
 }
+int _selectedIndex = 0;
 
 class _NotesViewState extends State<NotesView> {
+
+  void _onDestinationSelected(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
   final List<Note> notes = [
     Note(
+      title: 'Start Adding Notes',
+      content: 'Build Your Career With Notes... you can delete this note',
+      date: 'May 21, 2:00',
+    ),
+    Note(
+      title: 'Start Adding Notes',
+      content: 'Build Your Career With Notes... you can delete this note',
+      date: 'May 21, 2:00',
+    ),
+    Note(
+      title: 'Start Adding Notes',
+      content: 'Build Your Career With Notes... you can delete this note',
+      date: 'May 21, 2:00',
+    ),Note(
+      title: 'Start Adding Notes',
+      content: 'Build Your Career With Notes... you can delete this note',
+      date: 'May 21, 2:00',
+    ),Note(
+      title: 'Start Adding Notes',
+      content: 'Build Your Career With Notes... you can delete this note',
+      date: 'May 21, 2:00',
+    ),Note(
+      title: 'Start Adding Notes',
+      content: 'Build Your Career With Notes... you can delete this note',
+      date: 'May 21, 2:00',
+    ),Note(
+      title: 'Start Adding Notes',
+      content: 'Build Your Career With Notes... you can delete this note',
+      date: 'May 21, 2:00',
+    ),Note(
+      title: 'Start Adding Notes',
+      content: 'Build Your Career With Notes... you can delete this note',
+      date: 'May 21, 2:00',
+    ),Note(
+      title: 'Start Adding Notes',
+      content: 'Build Your Career With Notes... you can delete this note',
+      date: 'May 21, 2:00',
+    ),Note(
       title: 'Start Adding Notes',
       content: 'Build Your Career With Notes... you can delete this note',
       date: 'May 21, 2:00',
@@ -111,6 +158,7 @@ class _NotesViewState extends State<NotesView> {
         },
         child: const Icon(Icons.add),
       ),
+      bottomNavigationBar: CustomNavigationBar(selectedIndex: _selectedIndex, onDestinationSelected: _onDestinationSelected),
     );
   }
 }
